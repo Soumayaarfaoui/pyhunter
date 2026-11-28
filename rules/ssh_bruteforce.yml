@@ -1,0 +1,23 @@
+# Identify the detection rule
+name: ssh_bruteforce
+
+# Explain what the rule detects
+description: Many failed SSH logins from one source IP
+
+# Analyze only failed authentication events
+event_type: auth_failure
+
+# Group events by source IP to track each attacker separately
+group_by: src_ip
+
+# Trigger an alert after 10 failed attempts
+threshold: 10
+
+# Count attempts within a 60-second window
+window_seconds: 60
+
+# Assign high severity to the generated alert
+severity: high
+
+# Map the detection to MITRE ATT&CK Brute Force technique
+mitre: T1110
